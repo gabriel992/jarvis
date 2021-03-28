@@ -1,20 +1,24 @@
 version: '3.2'
 
 services:
-  api-front:
+  app-myfeed:
     image: gblbjj/myfeed:1.0.0
+    hostname: myfeed
     ports:
       - "5000:5000"
     networks:
-      - jarvis-net  
-    
+      - redzone-net  
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints: [node.platform.os == linux]  
 
+  # nginx:
+  #   image: nginx:1.19.5
+        
 networks:
-  jarvis-net:
+  redzone-net:
     driver: overlay
+  
         
